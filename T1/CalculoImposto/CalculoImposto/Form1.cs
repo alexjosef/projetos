@@ -19,29 +19,29 @@ namespace CalculoImposto
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double valorDaNotaFiscal = 3999;
+            double valorDaNotaFiscal = 4999;
             double imposto;
 
             if (valorDaNotaFiscal < 1000)
             {
-                imposto = 0.02;
+                imposto = valorDaNotaFiscal * 0.02;
             }
 
             else if (valorDaNotaFiscal < 3000)
             {
-                imposto = 0.025;
+                imposto = valorDaNotaFiscal * 0.025;
             }
 
             else if (valorDaNotaFiscal < 7000)
             {
-                imposto = 0.028;
+                imposto = valorDaNotaFiscal * 0.028;
             }
 
             else 
             {
-                imposto = 0.03;
+                imposto = valorDaNotaFiscal * 0.03;
             }
-            MessageBox.Show("O valor de imposto séra:" + imposto);
+            MessageBox.Show("O valor de imposto séra: " + imposto);
         }   
 
     }

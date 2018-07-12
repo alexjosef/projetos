@@ -20,7 +20,7 @@ namespace CalculandoBhaskara
         private void button1_Click(object sender, EventArgs e)
         {
             int a = 2;
-            int b = 10;
+            int b = 5;
             int c = 2;
 
             double delta;

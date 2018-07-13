@@ -33,8 +33,10 @@ namespace TesteConta
             c2.agencia = 10;
             c2.CPF = "111.444.555.40";
 
-            MessageBox.Show(c.titular + " - " + c.CPF + " - " + c.agencia);
-            MessageBox.Show(c2.titular + " - " + c2.CPF + " - " + c2.agencia);
+            c2.Transfere(250, c);
+
+            MessageBox.Show("Saldo Alex: " + c.saldo);
+            MessageBox.Show("Saldo Lucas: " + c2.saldo);
             
         }
     }

@@ -28,7 +28,7 @@ namespace TesteConta
 
             Conta c2 = new Conta();
             c2.numero = 2;
-            c2.titular = "Lucas Lopes";
+            c2.cliente = "Lucas Lopes";
             c2.saldo = 1000.0;
             c2.agencia = 10;
             c2.CPF = "111.444.555.40";
@@ -37,7 +37,14 @@ namespace TesteConta
 
             MessageBox.Show("Saldo Alex: " + c.saldo);
             MessageBox.Show("Saldo Lucas: " + c2.saldo);
-            
+
+            Cliente Alex = new Cliente();
+            Alex.nome = "Alex Jose";    
+
+            Conta Conta = new Conta();
+            Conta.cliente = Alex;
+
+            MessageBox.Show(Conta.cliente.nome);
         }
     }
 }

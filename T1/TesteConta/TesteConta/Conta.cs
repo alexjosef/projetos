@@ -9,19 +9,22 @@ namespace TesteConta
     class Conta
     {
         public int numero;
-        public string titular;
+        public Cliente titular;
         public double saldo;
         public int agencia;
         public string CPF;
+        public Cliente cliente;
 
-        public void Saca(double valor)
+        public void Saca(double ValorASacar)
         {
-            this.saldo -= valor;
+            if (ValorASacar > 0 && ValorASacar <= this.saldo)
+            this.saldo -= ValorASacar;
         }
 
-        public void Deposita(double valor)
+        public void Deposita(double ValorADepositar)
         {
-            this.saldo += valor;
+            if (ValorADepositar > 0)
+            this.saldo += ValorADepositar;
         }
 
         public void Transfere(double valor, Conta destino)

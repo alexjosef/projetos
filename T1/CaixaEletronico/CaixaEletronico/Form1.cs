@@ -25,9 +25,8 @@ namespace CaixaEletronico
 
             conta.Sacar(100);
             conta.Sacar(200);
-            conta.Titular = new Cliente();
-            conta.Titular.nome = "Alex José";
-            MessageBox.Show("O saldo atual é: " + conta.Saldo);
+            Cliente alex = new Cliente("Alex José");
+            MessageBox.Show("O saldo atual é: " + alex.Nome);
 
 
         }

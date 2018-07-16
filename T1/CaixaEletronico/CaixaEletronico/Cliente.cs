@@ -8,7 +8,13 @@ namespace CaixaEletronico
 {
     class Cliente
     {
-        public string nome;
+        public string Nome { get; set; }
+
+            public Cliente(string Nome)
+        {
+            this.Nome = Nome;
+        }
+
         public int idade;
         public string cpf;
         public string rg;

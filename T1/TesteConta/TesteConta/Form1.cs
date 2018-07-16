@@ -20,29 +20,36 @@ namespace TesteConta
         private void button1_Click(object sender, EventArgs e)
         {
             Conta c = new Conta();
+            Cliente cliente1 = new Cliente();
+            c.titular = cliente1;
+            c.titular.nome = "Alex José";
             c.numero = 1;
-            c.titular = "Alex José";
             c.saldo = 500.0;
-            c.agencia = 20;
-            c.CPF = "074.242.589.40";
+            c.agencia = 10;
+            cliente1.cpf = "074.242.589.40";
+            cliente1.rg = "5861798";
 
             Conta c2 = new Conta();
+            Cliente cliente2 = new Cliente();
+            c2.titular = cliente2;
+            c2.titular.nome = "Lucas Lopes";
             c2.numero = 2;
-            c2.cliente = "Lucas Lopes";
             c2.saldo = 1000.0;
-            c2.agencia = 10;
-            c2.CPF = "111.444.555.40";
+            c2.agencia = 20;
+            cliente2.cpf = "111.444.555.40";
+            cliente2.rg = "1115557";
 
             c2.Transfere(250, c);
 
-            MessageBox.Show("Saldo Alex: " + c.saldo);
-            MessageBox.Show("Saldo Lucas: " + c2.saldo);
+            MessageBox.Show("Conta: " + cliente1.nome + " Saldo: " + c.saldo);
+            MessageBox.Show("Conta: " + cliente2.nome + " Saldo: " + c2.saldo);
 
             Cliente Alex = new Cliente();
             Alex.nome = "Alex Jose";    
 
             Conta Conta = new Conta();
             Conta.cliente = Alex;
+            Alex.rg = "5861798";
 
             MessageBox.Show(Conta.cliente.nome);
         }

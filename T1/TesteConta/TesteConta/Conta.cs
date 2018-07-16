@@ -12,7 +12,6 @@ namespace TesteConta
         public Cliente titular;
         public double saldo;
         public int agencia;
-        public string CPF;
         public Cliente cliente;
 
         public void Saca(double ValorASacar)

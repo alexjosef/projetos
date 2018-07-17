@@ -9,21 +9,63 @@ namespace CaixaEletronico
     class Conta
     {
         public int Numero { get; set; }
-        public double Saldo { get; private set; }
         public Cliente Titular { get; set; }
+        public double Saldo { get; protected set; }
 
-        public void Sacar (double valor)
+        public virtual void Deposita(double valor)
         {
-            this.Saldo -= valor + 0.1;
+            if (valor > 0)
+            {
+                this.Saldo += valor;
+            }
         }
-        public void Depositar (double valor)
+
+        public virtual bool Saca(double valor)
         {
-            this.Saldo += valor;
+            if (valor > this.Saldo || valor < 0)
+            {
+                return false;
+            }
+            else
+            {
+                if (this.Titular.EhMaiorDeIdade())
+                {
+                    this.Saldo -= valor;
+                    return true;
+                }
+                else
+                {
+                    if (valor <= 200)
+                    {
+                        this.Saldo -= valor;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
         }
-        public void transferir (double valor, Conta destino)
+
+        public void Transfere(double valor, Conta destino)
         {
-            this.Sacar(valor);
-            destino.Depositar(valor);
+            this.Saca(valor);
+            destino.Deposita(valor);
+        }
+
+        public double CalculaRendimentoAnual()
+        {
+            double saldoNaqueleMes = this.Saldo;
+
+            for (int i = 0; i < 12; i++)
+            {
+                saldoNaqueleMes = saldoNaqueleMes * 1.007;
+            }
+
+            double rendimento = saldoNaqueleMes - this.Saldo;
+
+            return rendimento;
         }
     }
 }

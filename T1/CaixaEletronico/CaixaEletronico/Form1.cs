@@ -12,22 +12,50 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
+        Conta conta;
+
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.conta = new ContaCorrente();
+            // this.conta = new ContaPoupanca(); TESTE PARA CONTA POUPANÇA
+            this.conta.Titular = new Cliente();
+
+            this.conta.Titular.Nome = "Victor";
+            this.conta.Numero = 1;
+            this.conta.Deposita(200.0);
+            
+
+            this.MostraConta();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Conta conta = new Conta();
+            string textoDoValorDoDeposito = textoValor.Text;
+            double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
+            this.conta.Deposita(valorDeposito);
 
-            conta.Depositar(1000);
+            this.MostraConta();
+        }
 
-            conta.Sacar(100);
-            conta.Sacar(200);
-            Cliente alex = new Cliente() { Nome = "Alex José", cpf = "07424258940", Rg = "5861798" };
-            MessageBox.Show("O saldo atual é: " + alex.Nome  +  alex.cpf  +  alex.Rg);
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string textoDoValorDoSaque = textoValor.Text;
+            double valorSaque = Convert.ToDouble(textoDoValorDoSaque);
+            this.conta.Saca(valorSaque);
 
+            this.MostraConta();
+        }
+
+        private void MostraConta()
+        {
+            textoTitular.Text = conta.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            textoNumero.Text = Convert.ToString(conta.Numero);
         }
     }
 }

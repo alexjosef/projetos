@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CaixaEletronico
+﻿namespace CaixaEletronico
 {
     class Cliente
     {
         public string Nome { get; set; }
-        public int idade;
+        public string rg;
         public string cpf;
-        public string Rg { get; set; }
         public string endereco;
-        public string titular;
+        public int idade;
 
-        public Cliente (string nome, string rg)
+        public Cliente(string nome)
         {
             this.Nome = nome;
-            this.Rg = rg;
         }
+
         public Cliente() { }
-             
+
+        public bool EhMaiorDeIdade()
+        {
+            return this.idade >= 18;
+        }
     }
 }

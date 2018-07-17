@@ -14,7 +14,7 @@ namespace MaoNaMassaWF
 
         public void Sacar(double valor)
         {
-            this.Saldo = valor;
+            this.Saldo -= valor;
         }
         public void Depositar(double valor)
         {

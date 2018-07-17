@@ -31,6 +31,9 @@
             this.TextoTitular = new System.Windows.Forms.TextBox();
             this.TextoSaldo = new System.Windows.Forms.TextBox();
             this.TextoNumero = new System.Windows.Forms.TextBox();
+            this.TextoValor = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TextoTitular
@@ -54,11 +57,41 @@
             this.TextoNumero.Size = new System.Drawing.Size(100, 20);
             this.TextoNumero.TabIndex = 2;
             // 
+            // TextoValor
+            // 
+            this.TextoValor.Location = new System.Drawing.Point(110, 249);
+            this.TextoValor.Name = "TextoValor";
+            this.TextoValor.Size = new System.Drawing.Size(100, 20);
+            this.TextoValor.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(36, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Depositar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(209, 275);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Saque";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(317, 310);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.TextoValor);
             this.Controls.Add(this.TextoNumero);
             this.Controls.Add(this.TextoSaldo);
             this.Controls.Add(this.TextoTitular);
@@ -75,6 +108,9 @@
         private System.Windows.Forms.TextBox TextoTitular;
         private System.Windows.Forms.TextBox TextoSaldo;
         private System.Windows.Forms.TextBox TextoNumero;
+        private System.Windows.Forms.TextBox TextoValor;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

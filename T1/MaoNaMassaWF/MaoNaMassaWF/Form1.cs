@@ -43,7 +43,7 @@ namespace MaoNaMassaWF
         {
             string Valordepositar = TextoValor.Text;
             double valor = Convert.ToDouble(Valordepositar);
-            this.conta.Depositar(valor + this.conta.Saldo);
+            this.conta.Depositar(valor);
 
             this.MostraConta();
         }
@@ -56,6 +56,6 @@ namespace MaoNaMassaWF
 
             this.MostraConta();
         }
-        
+
     }
 }

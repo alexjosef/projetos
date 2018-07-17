@@ -18,7 +18,7 @@ namespace MaoNaMassaWF
         }
         public void Depositar(double valor)
         {
-            this.Saldo = valor;
+            this.Saldo += valor;
         }
         public void Transferir(double valor, Conta destino)
         {

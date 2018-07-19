@@ -21,14 +21,13 @@ namespace CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.conta = new ContaPoupanca();
+            this.conta = new ContaCorrente();
             // this.conta = new ContaPoupanca(); TESTE PARA CONTA POUPANÇA
             this.conta.Titular = new Cliente();
 
             this.conta.Titular.Nome = "Victor";
             this.conta.Numero = 1;
             this.conta.Deposita(200.0);
-            this.conta.Titular.idade = 17;
             
 
             this.MostraConta();
@@ -59,19 +58,22 @@ namespace CaixaEletronico
             textoNumero.Text = Convert.ToString(conta.Numero);
         }
 
+        private void textoTitular_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             Conta c1 = new Conta();
-            c1.Deposita(10);
-            ContaCorrente c2 = new ContaCorrente();
-            c2.Deposita(100);
-
+            c1.Deposita(200.0);
+            ContaPoupanca c2 = new ContaPoupanca();
+            c2.Deposita(125.0);
             TotalizadorDeContas t = new TotalizadorDeContas();
-            t.Adiciona(c1);
-            t.Adiciona(c2);
+            t.Soma(c1);
+            t.Soma(c2);
 
-            MessageBox.Show("O Total é: " + t.saldoTotal);
-
+            MessageBox.Show("valor total: " + t.ValorTotal);
         }
     }
 }

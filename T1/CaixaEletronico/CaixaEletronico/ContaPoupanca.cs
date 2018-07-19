@@ -8,9 +8,6 @@ namespace CaixaEletronico
 {
     class ContaPoupanca : Conta
     {
-        public void CalculaRendimento(){
-        }
-
         public override void Deposita(double valor)
         {
             if (valor > 0)

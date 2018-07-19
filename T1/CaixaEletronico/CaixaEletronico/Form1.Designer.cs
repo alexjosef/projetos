@@ -44,6 +44,7 @@
             this.textoTitular.Size = new System.Drawing.Size(100, 20);
             this.textoTitular.TabIndex = 0;
             this.textoTitular.Text = "Titular";
+            this.textoTitular.TextChanged += new System.EventHandler(this.textoTitular_TextChanged);
             // 
             // textoNumero
             // 
@@ -90,11 +91,11 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(124, 226);
+            this.button3.Location = new System.Drawing.Point(55, 256);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(187, 23);
             this.button3.TabIndex = 6;
-            this.button3.Text = "Totalizador";
+            this.button3.Text = "Testa Totalizador De Contas";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -102,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(284, 325);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

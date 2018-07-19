@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banco.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Conta.cs" />
     <Compile Include="ContaCorrente.cs" />
@@ -59,7 +58,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TotalizadorDeContas.cs" />
+    <Compile Include="TotalizadorDeContas .cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

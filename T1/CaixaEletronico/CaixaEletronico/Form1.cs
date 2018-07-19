@@ -23,19 +23,19 @@ namespace CaixaEletronico
         {
             contas = new Conta[3];
 
-            Conta contaDoVictor = new Conta();
+            Conta contaDoVictor = new ContaCorrente();
             contaDoVictor.Titular = new Cliente();
             contaDoVictor.Titular.Nome = "Victor";
             contaDoVictor.Numero = 1;
             contas[0] = contaDoVictor;
 
-            Conta contaDoGuilherme = new Conta();
+            Conta contaDoGuilherme = new ContaPoupanca();
             contaDoGuilherme.Titular = new Cliente();
             contaDoGuilherme.Titular.Nome = "Guilherme";
             contaDoGuilherme.Numero = 2;
             contas[1] = contaDoGuilherme;
 
-            Conta contaDoMauricio = new Conta();
+            Conta contaDoMauricio = new ContaInvestimento();
             contaDoMauricio.Titular = new Cliente();
             contaDoMauricio.Titular.Nome = "Mauricio";
             contaDoMauricio.Numero = 3;
@@ -88,7 +88,7 @@ namespace CaixaEletronico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Conta c1 = new Conta();
+            Conta c1 = new ContaCorrente();
             c1.Deposita(200.0);
             ContaPoupanca c2 = new ContaPoupanca();
             c2.Deposita(125.0);
@@ -121,6 +121,19 @@ namespace CaixaEletronico
 
             this.MostraConta(contaSelecionada);
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            GerenciadorDeImposto gerenciador = new GerenciadorDeImposto();
+
+            ContaPoupanca cp = new ContaPoupanca();
+            SeguroDeVida sv = new SeguroDeVida();
+
+            gerenciador.Adiciona(cp);
+            gerenciador.Adiciona(sv);
+
+            MessageBox.Show("Total: " + gerenciador.Total);
         }
     }
 }

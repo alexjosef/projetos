@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    class ContaCorrente : Conta, ITributavel
+    class ContaInvestimento : Conta, ITributavel
     {
         public double CalculaTributo()
         {
-            return this.Saldo * 0.02;
+            return this.Saldo * 0.03;
         }
 
         public override bool Saca(double valor)
@@ -21,7 +21,7 @@ namespace CaixaEletronico
             }
             else
             {
-                this.Saldo -= (valor + 0.1);
+                this.Saldo -= valor;
                 return true;
             }
         }

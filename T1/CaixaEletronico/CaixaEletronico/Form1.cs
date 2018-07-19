@@ -21,7 +21,7 @@ namespace CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            contas = new Conta[3];
+            contas = new Conta[4];
 
             Conta contaDoVictor = new ContaCorrente();
             contaDoVictor.Titular = new Cliente();
@@ -29,17 +29,23 @@ namespace CaixaEletronico
             contaDoVictor.Numero = 1;
             contas[0] = contaDoVictor;
 
+            Conta contaDoAlex = new ContaCorrente();
+            contaDoAlex.Titular = new Cliente();
+            contaDoAlex.Titular.Nome = "Alex";
+            contaDoAlex.Numero = 2;
+            contas[1] = contaDoAlex;
+
             Conta contaDoGuilherme = new ContaPoupanca();
             contaDoGuilherme.Titular = new Cliente();
             contaDoGuilherme.Titular.Nome = "Guilherme";
-            contaDoGuilherme.Numero = 2;
-            contas[1] = contaDoGuilherme;
+            contaDoGuilherme.Numero = 3;
+            contas[2] = contaDoGuilherme;
 
             Conta contaDoMauricio = new ContaInvestimento();
             contaDoMauricio.Titular = new Cliente();
             contaDoMauricio.Titular.Nome = "Mauricio";
-            contaDoMauricio.Numero = 3;
-            contas[2] = contaDoMauricio;
+            contaDoMauricio.Numero = 4;
+            contas[3] = contaDoMauricio;
 
             foreach (Conta conta in this.contas)
             {
@@ -134,6 +140,12 @@ namespace CaixaEletronico
             gerenciador.Adiciona(sv);
 
             MessageBox.Show("Total: " + gerenciador.Total);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int proxima = ContaCorrente.ProximaConta();
+            MessageBox.Show("Total de contas correntes: " + proxima);
         }
     }
 }

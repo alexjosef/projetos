@@ -31,10 +31,13 @@
             this.textoTitular = new System.Windows.Forms.TextBox();
             this.textoNumero = new System.Windows.Forms.TextBox();
             this.textoSaldo = new System.Windows.Forms.TextBox();
-            this.textoValor = new System.Windows.Forms.TextBox();
+            this.valorOperacao = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.comboContas = new System.Windows.Forms.ComboBox();
+            this.destinoDaTransferencia = new System.Windows.Forms.ComboBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -44,7 +47,6 @@
             this.textoTitular.Size = new System.Drawing.Size(100, 20);
             this.textoTitular.TabIndex = 0;
             this.textoTitular.Text = "Titular";
-            this.textoTitular.TextChanged += new System.EventHandler(this.textoTitular_TextChanged);
             // 
             // textoNumero
             // 
@@ -62,12 +64,12 @@
             this.textoSaldo.TabIndex = 2;
             this.textoSaldo.Text = "Saldo";
             // 
-            // textoValor
+            // valorOperacao
             // 
-            this.textoValor.Location = new System.Drawing.Point(12, 193);
-            this.textoValor.Name = "textoValor";
-            this.textoValor.Size = new System.Drawing.Size(100, 20);
-            this.textoValor.TabIndex = 3;
+            this.valorOperacao.Location = new System.Drawing.Point(12, 193);
+            this.valorOperacao.Name = "valorOperacao";
+            this.valorOperacao.Size = new System.Drawing.Size(100, 20);
+            this.valorOperacao.TabIndex = 3;
             // 
             // button1
             // 
@@ -91,7 +93,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(55, 256);
+            this.button3.Location = new System.Drawing.Point(55, 299);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(187, 23);
             this.button3.TabIndex = 6;
@@ -99,15 +101,45 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // comboContas
+            // 
+            this.comboContas.FormattingEnabled = true;
+            this.comboContas.Location = new System.Drawing.Point(90, 27);
+            this.comboContas.Name = "comboContas";
+            this.comboContas.Size = new System.Drawing.Size(121, 21);
+            this.comboContas.TabIndex = 7;
+            this.comboContas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // destinoDaTransferencia
+            // 
+            this.destinoDaTransferencia.FormattingEnabled = true;
+            this.destinoDaTransferencia.Location = new System.Drawing.Point(12, 229);
+            this.destinoDaTransferencia.Name = "destinoDaTransferencia";
+            this.destinoDaTransferencia.Size = new System.Drawing.Size(121, 21);
+            this.destinoDaTransferencia.TabIndex = 8;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(205, 227);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "Transferir";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 325);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.destinoDaTransferencia);
+            this.Controls.Add(this.comboContas);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textoValor);
+            this.Controls.Add(this.valorOperacao);
             this.Controls.Add(this.textoSaldo);
             this.Controls.Add(this.textoNumero);
             this.Controls.Add(this.textoTitular);
@@ -124,10 +156,13 @@
         private System.Windows.Forms.TextBox textoTitular;
         private System.Windows.Forms.TextBox textoNumero;
         private System.Windows.Forms.TextBox textoSaldo;
-        private System.Windows.Forms.TextBox textoValor;
+        private System.Windows.Forms.TextBox valorOperacao;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox comboContas;
+        private System.Windows.Forms.ComboBox destinoDaTransferencia;
+        private System.Windows.Forms.Button button4;
     }
 }
 

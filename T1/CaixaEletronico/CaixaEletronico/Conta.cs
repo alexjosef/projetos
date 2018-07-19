@@ -48,7 +48,7 @@ namespace CaixaEletronico
             }
         }
 
-        public void Transfere(double valor, Conta destino)
+        public void TransferePara( Conta destino, double valor)
         {
             this.Saca(valor);
             destino.Deposita(valor);

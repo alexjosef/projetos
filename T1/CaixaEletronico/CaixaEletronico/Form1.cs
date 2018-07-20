@@ -15,7 +15,7 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
-        Conta[] contas;
+        List<Conta> contas;
         private int quantidadeDeContas;
 
         public Form1()
@@ -25,25 +25,25 @@ namespace CaixaEletronico
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            contas = new Conta[20];
+            contas = new List <Conta>();
 
             Conta contaDoVictor = new ContaCorrente();
             contaDoVictor.Titular = new Cliente();
             contaDoVictor.Titular.Nome = "Victor";
             contaDoVictor.Numero = 1;
-            contas[0] = contaDoVictor;
+            contas.Add(contaDoVictor);
 
             Conta contaDoGuilherme = new ContaPoupanca();
             contaDoGuilherme.Titular = new Cliente();
             contaDoGuilherme.Titular.Nome = "Guilherme";
             contaDoGuilherme.Numero = 2;
-            contas[1] = contaDoGuilherme;
+            contas.Add(contaDoGuilherme);
 
             Conta contaDoMauricio = new ContaInvestimento();
             contaDoMauricio.Titular = new Cliente();
             contaDoMauricio.Titular.Nome = "Mauricio";
             contaDoMauricio.Numero = 3;
-            contas[2] = contaDoMauricio;
+            contas.Add(contaDoMauricio);
 
             this.quantidadeDeContas = 3;
 

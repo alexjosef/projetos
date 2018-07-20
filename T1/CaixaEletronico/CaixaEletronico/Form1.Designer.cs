@@ -34,10 +34,10 @@
             this.valorOperacao = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.comboContas = new System.Windows.Forms.ComboBox();
             this.destinoDaTransferencia = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -93,20 +93,10 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(12, 281);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(187, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Testa Totalizador De Contas";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // comboContas
             // 
             this.comboContas.FormattingEnabled = true;
-            this.comboContas.Location = new System.Drawing.Point(90, 27);
+            this.comboContas.Location = new System.Drawing.Point(78, 24);
             this.comboContas.Name = "comboContas";
             this.comboContas.Size = new System.Drawing.Size(121, 21);
             this.comboContas.TabIndex = 7;
@@ -130,23 +120,33 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(60, 318);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(176, 23);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Teste Equals e ToString";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.testeEquals_click);
+            // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 310);
+            this.button5.Location = new System.Drawing.Point(87, 273);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(187, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "Testa Gerenciador De Imposto";
+            this.button5.Size = new System.Drawing.Size(112, 23);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Adicionar conta";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(205, 281);
+            this.button6.Location = new System.Drawing.Point(205, 24);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Total CC";
+            this.button6.TabIndex = 12;
+            this.button6.Text = "remover";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -157,10 +157,10 @@
             this.ClientSize = new System.Drawing.Size(284, 353);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.destinoDaTransferencia);
             this.Controls.Add(this.comboContas);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.valorOperacao);
@@ -183,10 +183,10 @@
         private System.Windows.Forms.TextBox valorOperacao;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboContas;
         private System.Windows.Forms.ComboBox destinoDaTransferencia;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
     }

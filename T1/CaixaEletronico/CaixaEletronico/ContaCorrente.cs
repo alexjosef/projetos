@@ -4,35 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaixaEletronico
+namespace Caelum.CaixaEletronico.Modelo.Contas
 {
-    
-    class ContaCorrente : Conta, ITributavel
+   class ContaCorrente : Conta, ITributavel
     {
         private static int totalDeContas = 0;
+
         public ContaCorrente()
         {
-            ContaCorrente.totalDeContas++;
+                ContaCorrente.totalDeContas++;
         }
-        public static int ProximaConta()
+
+        public int ProximaConta()
         {
             return ContaCorrente.totalDeContas + 1;
         }
+
         public double CalculaTributo()
         {
             return this.Saldo * 0.02;
         }
 
-        public override bool Saca(double valor)
+        public override void Saca(double valor)
         {
-            if (valor > this.Saldo || valor < 0)
+            if (valor > this.Saldo )
             {
-                return false;
+                throw new SaldoInsuficienteException("Valor do saque maior que o saldo");
+            } else if(valor < 0) {
+                throw new ArgumentException();
             }
             else
             {
                 this.Saldo -= (valor + 0.1);
-                return true;
             }
         }
     }

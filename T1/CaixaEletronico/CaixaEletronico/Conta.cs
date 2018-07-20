@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Caelum.CaixaEletronico.Modelo.Usuarios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaixaEletronico
+namespace Caelum.CaixaEletronico.Modelo.Contas
 {
-    abstract class Conta
+    public abstract class Conta
     {
         public int Numero { get; set; }
         public Cliente Titular { get; set; }
@@ -20,7 +21,7 @@ namespace CaixaEletronico
             }
         }
 
-        public abstract bool Saca(double valor);
+        public abstract void Saca(double valor);
 
         public void TransferePara( Conta destino, double valor)
         {
@@ -40,6 +41,27 @@ namespace CaixaEletronico
             double rendimento = saldoNaqueleMes - this.Saldo;
 
             return rendimento;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(obj != null) {
+                Conta outra = (Conta)obj;
+
+                bool numero = (this.Numero == outra.Numero);
+                bool titular = (this.Titular.Equals(outra.Titular));
+
+                return numero && titular;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Numero: " + this.Numero;
         }
     }
 }

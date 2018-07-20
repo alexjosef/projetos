@@ -54,5 +54,10 @@ namespace CaixaEletronico
             c.Titular.Nome = titularConta.Text;
             this.aplicacaoPrincipal.AdicionaConta(c);
         }
+
+        private void numeroDaConta_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

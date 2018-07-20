@@ -16,16 +16,15 @@ namespace CaixaEletronico
     public partial class Form1 : Form
     {
         List<Conta> contas;
-        private int quantidadeDeContas;
-
         public Form1()
         {
             InitializeComponent();
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            contas = new List <Conta>();
+            contas = new List<Conta>();
 
             Conta contaDoVictor = new ContaCorrente();
             contaDoVictor.Titular = new Cliente();
@@ -45,13 +44,11 @@ namespace CaixaEletronico
             contaDoMauricio.Numero = 3;
             contas.Add(contaDoMauricio);
 
-            this.quantidadeDeContas = 3;
-
             foreach (Conta conta in this.contas)
             {
                 if (conta != null) {
-                    comboContas.Items.Add(conta);
-                    destinoDaTransferencia.Items.Add(conta);
+                    comboContas.Items.Add(conta.Titular.Nome);
+                    destinoDaTransferencia.Items.Add(conta.Titular.Nome);
                 }
             }
         }
@@ -112,36 +109,14 @@ namespace CaixaEletronico
 
         public void AdicionaConta(Conta c)
         {
-            if (this.quantidadeDeContas == this.contas.Length)
-            {
-                Conta[] novo = new Conta[this.contas.Length * 2];
-                for (int i = 0; i < this.quantidadeDeContas; i++)
-                {
-                    novo[i] = this.contas[i];
-                }
-                this.contas = novo;
-            }
-            this.contas[this.quantidadeDeContas] = c;
-            this.quantidadeDeContas++;
+            this.contas.Add(c);
+
             comboContas.Items.Add(c);
         }
 
         public void RemoveConta(Conta c)
         {
-            comboContas.Items.Remove(c);
-            int i;
-            for (i = 0; i < this.quantidadeDeContas; i++)
-            {
-                if (this.contas[i] == c)
-                {
-                    break;
-                }
-            }
-            while (i + 1 < this.quantidadeDeContas)
-            {
-                this.contas[i] = this.contas[i + 1];
-                i++;
-            }
+            this.contas.Remove(c);
         }
     
 

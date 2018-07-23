@@ -15,6 +15,7 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
+        
         List<Conta> contas;
         public Form1()
         {
@@ -162,6 +163,28 @@ namespace CaixaEletronico
         {
             Conta conta = BuscaContaSelecionada();
             this.RemoveConta(conta);
+        }
+
+        private Conta ContaComSaldo(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            var lista = new List<Conta>();
+
+            lista.Add(ContaComSaldo(2300));
+            lista.Add(ContaComSaldo(1500));
+            lista.Add(ContaComSaldo(2500));
+
+            var filtradas = from c in contas
+                            where c.Saldo > 2000
+                            select c;
+
+            double saldoTotal = filtradas.Sum(c => c.Saldo);
+            MessageBox.Show("O total é " + saldoTotal);
+
         }
     }
 }

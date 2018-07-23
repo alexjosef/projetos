@@ -68,6 +68,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaldoInsuficienteException.cs" />
+    <Compile Include="StringsUtils.cs" />
     <EmbeddedResource Include="CadastroDeContas.resx">
       <DependentUpon>CadastroDeContas.cs</DependentUpon>
     </EmbeddedResource>

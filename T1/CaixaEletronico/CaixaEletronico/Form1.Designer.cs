@@ -46,6 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -125,9 +126,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(57, 318);
+            this.button3.Location = new System.Drawing.Point(12, 318);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 23);
+            this.button3.Size = new System.Drawing.Size(150, 23);
             this.button3.TabIndex = 10;
             this.button3.Text = "Teste Equals e ToString";
             this.button3.UseVisualStyleBackColor = true;
@@ -135,7 +136,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(87, 289);
+            this.button5.Location = new System.Drawing.Point(12, 289);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(112, 23);
             this.button5.TabIndex = 11;
@@ -207,11 +208,22 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Valor:";
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(184, 318);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(96, 23);
+            this.button7.TabIndex = 19;
+            this.button7.Text = "LINQ + LAMBDA";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 353);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -258,6 +270,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button7;
     }
 }
 

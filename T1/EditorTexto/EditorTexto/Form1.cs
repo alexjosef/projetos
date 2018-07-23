@@ -20,30 +20,26 @@ namespace EditorTexto
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (File.Exists("entrada.txt")) //confirmando existência do arquivo.
+            if (File.Exists("entrada.txt")) // confirmando existência do arquivo.
             {
-                Stream entrada = File.Open("entrada.txt", FileMode.Open);
-                StreamReader leitor = new StreamReader(entrada);
-                string linha = leitor.ReadToEnd();
-
-                while (linha != null) // enquanto leitor diferente de nulo.
+                using (Stream entrada = File.Open("entrada.txt", FileMode.Open))
+                using (StreamReader leitor = new StreamReader(entrada))
                 {
-                    texto.Text += linha;
-                    linha = leitor.ReadToEnd();
+                    string linha = leitor.ReadToEnd();
+                    texto.Text = linha;
                 }
-                leitor.Close();
-                entrada.Close();
+
             }
             
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Stream saida = File.Open("entrada.txt", FileMode.Create);
-            StreamWriter escritor = new StreamWriter(saida);
-            escritor.Write(texto.Text);
-            escritor.Close();
-            saida.Close();
+            using (Stream saida = File.OpenWrite("entrada.txt"))
+            using (StreamWriter escritor = new StreamWriter(saida))
+            {
+                escritor.Write(texto.Text);
+            }
         }
     }
 }

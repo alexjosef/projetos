@@ -18,19 +18,24 @@ namespace Alura.Loja.Testes.ConsoleApp
 
                 ExibeEntries(contexto.ChangeTracker.Entries());
 
-                var novoProduto = new Produto()
+                var novoProduto = new Produto
                 {
-                    Nome = "Desinfetante",
+                    Nome = "Sabão em Pó",
                     Categoria = "Limpeza",
-                    Preco = 2.99
+                    Preco = 5.99,
                 };
                 contexto.Produtos.Add(novoProduto);
+
+                contexto.Produtos.Remove(novoProduto);
 
                 ExibeEntries(contexto.ChangeTracker.Entries());
 
                 contexto.SaveChanges();
 
                 ExibeEntries(contexto.ChangeTracker.Entries());
+
+                var entry = contexto.Entry(novoProduto);
+                Console.WriteLine("\n\n" + entry.Entity.ToString() + " - " + entry.State);
             }
         }
 

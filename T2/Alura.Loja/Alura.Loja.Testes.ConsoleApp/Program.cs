@@ -11,6 +11,41 @@ namespace Alura.Loja.Testes.ConsoleApp
     {
         static void Main(string[] args)
         {
+            using (var contexto = new LojaContext())
+            {
+                var promocao = new Promocao();
+                promocao.Descricao = "Queima Total Janeiro 2018";
+                promocao.DataInicio = new DateTime(2018, 1, 1);
+                promocao.DataTermino = new DateTime(2018, 1, 31);
+
+                var produtos = contexto
+                    .Produtos
+                    .Where(p => p.Categoria == "Bebidas")
+                    .ToList();
+
+                foreach (var item in produtos)
+                {
+                    promocao.IncluiProduto(item);
+                }
+
+                contexto.Promocoes.Add(promocao);
+                ExibeEntries(contexto.ChangeTracker.Entries());
+                contexto.SaveChanges();
+            }
+
+            using (var contexto2 = new LojaContext())
+            {
+                var promocao = contexto2.Promocoes.FirstOrDefault();
+                Console.WriteLine("\nMotrando os produtos da promoção...");
+                foreach (var item in promocao.Produtos)
+                {
+                    Console.WriteLine(item.Produto);
+                }
+            }
+        }
+
+        private static void UmParaUm()
+        {
             var fulano = new Cliente();
             fulano.Nome = "Fulaninho de tal";
             fulano.EnderecoDeEntrega = new Endereco()
@@ -27,7 +62,6 @@ namespace Alura.Loja.Testes.ConsoleApp
                 contexto.SaveChanges();
             }
         }
-
         private static void MuitosParaMuitos()
         {
 
@@ -36,7 +70,7 @@ namespace Alura.Loja.Testes.ConsoleApp
             var p3 = new Produto() { Nome = "Macarrão", Categoria = "Alimentos", PrecoUnitario = 4.23, Unidade = "Gramas" };
 
             var promocaoDePascoa = new Promocao();
-            promocaoDePascoa.Descrisao = "Pascoa Feliz!";
+            promocaoDePascoa.Descricao = "Pascoa Feliz!";
             promocaoDePascoa.DataInicio = DateTime.Now;
             promocaoDePascoa.DataTermino = DateTime.Now.AddMonths(3);
 

@@ -96,3 +96,18 @@ em {
 	text-align: center;
 	background-color: #E6E7E8;
 }
+.icones-redes-sociais a {
+    width: 40px;
+    height: 40px;
+    display: block;
+    text-indent: -9999px;
+}
+.icone-github {
+    background-image: url(github.png);
+}
+.icone-twitter{
+    background-image: url(twitter.png);
+}
+.icone-linkedin{
+    background-image: url(linkedin.png);
+}

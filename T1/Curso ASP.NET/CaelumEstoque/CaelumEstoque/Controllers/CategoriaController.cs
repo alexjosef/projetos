@@ -5,17 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using CaelumEstoque.DAO;
 using CaelumEstoque.Models;
-
 namespace CaelumEstoque.Controllers
 {
     public class CategoriaController : Controller
     {
-        // GET: Categoria
+        //
+        // GET: /Produto/
+
         public ActionResult Index()
         {
             CategoriasDAO dao = new CategoriasDAO();
             IList<CategoriaDoProduto> categorias = dao.Lista();
-            ViewBag.Categorias = categorias; 
+            ViewBag.Categorias = categorias;
             return View();
         }
 

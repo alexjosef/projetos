@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns01
 {
-    public class ISS
+    public class ISS : Imposto
     {
-        public double CalculaISS(Orcamento orcamento)
+        public double Calcula(Orcamento orcamento)
         {
             return orcamento.Valor * 0.06;
         }

@@ -8,11 +8,17 @@ namespace DesignPatterns01
 {
     public class Conta
     {
+        public string Titular { get; set; }
         public double Saldo { get; set; }
 
         public void Deposita(double valor)
         {
             this.Saldo += valor;
+        }
+        public Conta(String titular, double saldo)
+        {
+            this.Titular = titular;
+            this.Saldo = saldo;
         }
     }
 }

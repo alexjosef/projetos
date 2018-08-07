@@ -19,11 +19,29 @@ namespace DesignPatterns01
 
             //calculador.RealizarCalculo(orcamento, ISS);
 
-            Imposto ICCC = new ICCC();
-            Orcamento reforma = new Orcamento(5000.0);
-            CalculadorDeImpostos calculador = new CalculadorDeImpostos();
+            //Imposto ICCC = new ICCC();
+            //Orcamento reforma = new Orcamento(5000.0);
+            //CalculadorDeImpostos calculador = new CalculadorDeImpostos();
 
-            calculador.RealizarCalculo(reforma, ICCC);
+            //calculador.RealizarCalculo(reforma, ICCC);
+
+            Desconto d1 = new DescontoPorCincoItens();
+            Desconto d2 = new DescontoPorMaisDeQuinhentosReais();
+            Desconto d3 = new DescontoPorVendaCasada();
+            Desconto d4 = new SemDesconto();
+
+            d1.Proximo = d2;
+            d2.Proximo = d3;
+            d3.Proximo = d4;
+
+            Orcamento orcamento = new Orcamento(500.0);
+            orcamento.AdicionaItem(new Item("CANETA", 250));
+            orcamento.AdicionaItem(new Item("LAPIS", 250));
+            orcamento.AdicionaItem(new Item("CANETA", 250));
+
+
+            double desconto = d1.Desconta(orcamento);
+            Console.WriteLine(desconto);
         }
     }
 }

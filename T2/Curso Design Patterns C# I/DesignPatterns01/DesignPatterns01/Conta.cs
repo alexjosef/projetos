@@ -10,6 +10,8 @@ namespace DesignPatterns01
     {
         public string Titular { get; set; }
         public double Saldo { get; set; }
+        public int Numero { get; set; }
+        public int Agencia { get; set; }
 
         public void Deposita(double valor)
         {

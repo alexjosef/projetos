@@ -53,6 +53,9 @@
     <Compile Include="DescontoPorVendaCasada.cs" />
     <Compile Include="ICCC.cs" />
     <Compile Include="ICMS.cs" />
+    <Compile Include="ICPP.cs" />
+    <Compile Include="IHIT.cs" />
+    <Compile Include="IKCV.cs" />
     <Compile Include="Imposto.cs" />
     <Compile Include="Investimento.cs" />
     <Compile Include="ISS.cs" />
@@ -62,12 +65,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RealizadorDeInvestimentos.cs" />
+    <Compile Include="Relatorio.cs" />
+    <Compile Include="RelatorioComplexo.cs" />
+    <Compile Include="RelatorioSimples.cs" />
     <Compile Include="Requisicao.cs" />
     <Compile Include="Resposta.cs" />
     <Compile Include="RespostaEmCsv.cs" />
     <Compile Include="RespostaEmPorcento.cs" />
     <Compile Include="RespostaEmXml.cs" />
     <Compile Include="SemDesconto.cs" />
+    <Compile Include="TemplateDeImpostoCondicional.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

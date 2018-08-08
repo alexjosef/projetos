@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DesignPatterns01
+{
+    public class FiltroMesmoMes : Filtro
+    {
+        public FiltroMesmoMes(Filtro outroFiltro) : base(outroFiltro) { }
+        public FiltroMesmoMes() : base() { }
+
+        public override IList<Conta> Filtra(IList<Conta> contas)
+        {
+            IList<Conta> Filtrada = new List<Conta>();
+            foreach(Conta c in contas)
+            {
+                if(c.DataAbertura.Month == DateTime.Now.Month &&
+                    c.DataAbertura.Year == DateTime.Now.Year)
+                {
+                    Filtrada.Add(c);
+                }
+            }
+            foreach (Conta c in Proximo(contas))
+            {
+                Filtrada.Add(c);
+            }
+            return Filtrada;
+        }
+    }
+}

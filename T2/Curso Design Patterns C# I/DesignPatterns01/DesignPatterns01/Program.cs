@@ -43,6 +43,11 @@ namespace DesignPatterns01
             //double desconto = d1.Desconta(orcamento);
             //Console.WriteLine(desconto);
 
+            Imposto ISS = new ImpostoMuitoAlto(new ICPP());
+
+            Orcamento orcamento = new Orcamento(500);
+            double valor = ISS.Calcula(orcamento);
+            Console.WriteLine(valor);
 
         }
     }

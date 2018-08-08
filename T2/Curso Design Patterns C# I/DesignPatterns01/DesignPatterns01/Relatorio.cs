@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DesignPatterns01
 {
-    abstract class Relatorio
+    public abstract class Relatorio
     {
         protected abstract void Cabecalho();
         protected abstract void Rodape();

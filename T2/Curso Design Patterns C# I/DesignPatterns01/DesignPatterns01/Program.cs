@@ -61,8 +61,19 @@ namespace DesignPatterns01
             //Console.WriteLine(reforma.Valor);
             //reforma.Finaliza();
 
+            NotaFiscal nf = new NotaFiscalBuilder().ParaEmpresa("Caelum")
+                           .ComCnpj("123.456.789/0001-10")
+                           .Com(new ItemDaNota("item 1", 100.0))
+                           .Com(new ItemDaNota("item 2", 200.0))
+                           .Com(new ItemDaNota("item 3", 300.0))
+                           .ComObservacoes("entregar nf pessoalmente")
+                           .Constroi();
 
-
+            Console.WriteLine(nf.Cnpj);
+            Console.WriteLine(nf.RazaoSocial);
+            Console.WriteLine(nf.ValorTotal);
+            Console.WriteLine(nf.Impostos);
+            Console.WriteLine(nf.DataDeEmissao);
         }
     }
 }

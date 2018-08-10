@@ -17,9 +17,19 @@ namespace DesignPatterns01
 
         public IList<ItemDaNota> TodosItens = new List<ItemDaNota>();
 
+        public IList<AcaoAposGerarNota> todasAcoesASeremExecutadas;
+
         public NotaFiscal Constroi()
         {
-            return new NotaFiscal(RazaoSocial, Cnpj, Data, ValorTotal, Impostos, TodosItens, Observacoes);
+            NotaFiscal notaFiscal = new NotaFiscal(RazaoSocial, Cnpj, Data, ValorTotal, Impostos, TodosItens, Observacoes);
+
+            foreach (AcaoAposGerarNota acao in todasAcoesASeremExecutadas)
+            {
+                acao.Executa(notaFiscal);
+            }
+
+            return notaFiscal;
+
         }
 
         public NotaFiscalBuilder ComObservacoes(String observacoes)
@@ -31,6 +41,12 @@ namespace DesignPatterns01
         public NotaFiscalBuilder()
         {
             this.Data = DateTime.Now;
+            this.todasAcoesASeremExecutadas = new List<AcaoAposGerarNota>();
+        }
+
+        public void AdicionaAcao(AcaoAposGerarNota novaAcao)
+        {
+            this.todasAcoesASeremExecutadas.Add(novaAcao);
         }
 
         public NotaFiscalBuilder NaData(DateTime novaData)
@@ -50,7 +66,7 @@ namespace DesignPatterns01
             this.Cnpj = cnpj;
             return this;
         }
-        public NotaFiscalBuilder Com(ItemDaNota item)
+        public NotaFiscalBuilder Item(ItemDaNota item)
         {
             this.TodosItens.Add(item);
             this.ValorTotal += item.Valor;

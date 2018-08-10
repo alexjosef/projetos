@@ -61,19 +61,31 @@ namespace DesignPatterns01
             //Console.WriteLine(reforma.Valor);
             //reforma.Finaliza();
 
-            NotaFiscal nf = new NotaFiscalBuilder().ParaEmpresa("Caelum")
-                           .ComCnpj("123.456.789/0001-10")
-                           .Com(new ItemDaNota("item 1", 100.0))
-                           .Com(new ItemDaNota("item 2", 200.0))
-                           .Com(new ItemDaNota("item 3", 300.0))
-                           .ComObservacoes("entregar nf pessoalmente")
-                           .Constroi();
+            NotaFiscalBuilder builder = new NotaFiscalBuilder();
+            builder.AdicionaAcao(new EnviadorDeEmail());
+            builder.AdicionaAcao(new NotaFiscalDao());
+            builder.AdicionaAcao(new EnviadorDeSms());
+            builder.AdicionaAcao(new Impressora());
+            builder.AdicionaAcao(new Multiplicador(2));
+            builder.AdicionaAcao(new Multiplicador(3));
+            builder.AdicionaAcao(new Multiplicador(5.5));
 
-            Console.WriteLine(nf.Cnpj);
-            Console.WriteLine(nf.RazaoSocial);
-            Console.WriteLine(nf.ValorTotal);
-            Console.WriteLine(nf.Impostos);
-            Console.WriteLine(nf.DataDeEmissao);
+
+            NotaFiscal notaFiscal = builder.ParaEmpresa("Caelum")
+                            .ComCnpj("123.456.789/0001-10")
+                            .Item(new ItemDaNota("item 1", 100.0))
+                            .Item(new ItemDaNota("item 2", 200.0))
+                            .Item(new ItemDaNota("item 3", 300.0))
+                            .ComObservacoes("entregar notaFiscal pessoalmente")
+                            .Constroi();
+
+
+
+            Console.WriteLine(builder.Cnpj);
+            Console.WriteLine(builder.RazaoSocial);
+            Console.WriteLine(builder.ValorTotal);
+            Console.WriteLine(builder.Impostos);
+            Console.WriteLine(builder.Data);
         }
     }
 }

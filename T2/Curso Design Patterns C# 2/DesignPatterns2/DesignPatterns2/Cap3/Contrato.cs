@@ -30,5 +30,12 @@ namespace DesignPatterns2.Cap3
         {
             return new Estado(new Contrato(this.Data, this.Cliente, this.Tipo));
         }
+
+        public void Restaura(Estado estado)
+        {
+            this.Data = estado.Contrato.Data;
+            this.Cliente = estado.Contrato.Cliente;
+            this.Tipo = estado.Contrato.Tipo;
+        }
     }
 }

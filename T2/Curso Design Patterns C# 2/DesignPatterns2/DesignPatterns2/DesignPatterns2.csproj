@@ -53,6 +53,10 @@
     <Compile Include="Cap2\Re.cs" />
     <Compile Include="Cap2\Si.cs" />
     <Compile Include="Cap2\Sol.cs" />
+    <Compile Include="Cap3\Contrato.cs" />
+    <Compile Include="Cap3\Estado.cs" />
+    <Compile Include="Cap3\Historico.cs" />
+    <Compile Include="Cap3\TipoContrato.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -67,6 +67,12 @@
     <Compile Include="Cap5\ImpressoraVisitor.cs" />
     <Compile Include="Cap5\IVisitor.cs" />
     <Compile Include="Cap5\PreFixaVisitor.cs" />
+    <Compile Include="Cap6\EnviaPorEmail.cs" />
+    <Compile Include="Cap6\EnviaPorSms.cs" />
+    <Compile Include="Cap6\IEnviador.cs" />
+    <Compile Include="Cap6\IMensagem.cs" />
+    <Compile Include="Cap6\MensagemCliente.cs" />
+    <Compile Include="Cap6\MensagemAdministrativa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

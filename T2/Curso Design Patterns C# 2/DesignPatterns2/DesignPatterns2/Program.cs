@@ -5,13 +5,16 @@ using DesignPatterns2.Cap4;
 using DesignPatterns2.Cap5;
 using DesignPatterns2.Cap6;
 using DesignPatterns2.Cap7;
+using DesignPatterns2.Cap8;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace DesignPatterns2
 {
@@ -46,6 +49,16 @@ namespace DesignPatterns2
             //fila.Adiciona(new FinalizaPedido(pedido1));
 
             //fila.Processa();
+
+           //Cliente cliente = new Cliente();
+           // cliente.Nome = "Alex";
+           // cliente.Endereco = "Rua Godo Deeke";
+           // cliente.DataDeNascimento = DateTime.Now;
+
+           // String xml = new GeradorXml().GeraXml(cliente);
+
+           // Console.WriteLine(xml);
+
 
 
         }

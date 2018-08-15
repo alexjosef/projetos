@@ -6,6 +6,7 @@ using DesignPatterns2.Cap5;
 using DesignPatterns2.Cap6;
 using DesignPatterns2.Cap7;
 using DesignPatterns2.Cap8;
+using DesignPatterns2.Cap9;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -50,16 +51,22 @@ namespace DesignPatterns2
 
             //fila.Processa();
 
-           //Cliente cliente = new Cliente();
-           // cliente.Nome = "Alex";
-           // cliente.Endereco = "Rua Godo Deeke";
-           // cliente.DataDeNascimento = DateTime.Now;
+            //Cliente cliente = new Cliente();
+            // cliente.Nome = "Alex";
+            // cliente.Endereco = "Rua Godo Deeke";
+            // cliente.DataDeNascimento = DateTime.Now;
 
-           // String xml = new GeradorXml().GeraXml(cliente);
+            // String xml = new GeradorXml().GeraXml(cliente);
 
-           // Console.WriteLine(xml);
+            // Console.WriteLine(xml);
 
+            //String cpf = "12345";
 
+            //EmpresaFacade facade = new EmpresaFacadeSingleton().Instancia;
+            //Cliente cliente = facade.BuscaPorCliente(cpf);
+
+            //var fatura = facade.CriaFatura(cliente, 5000);
+            //facade.GeraCobranca(tipo.boleto, fatura);
 
         }
     }

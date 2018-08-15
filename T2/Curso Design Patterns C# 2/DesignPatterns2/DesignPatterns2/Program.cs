@@ -4,6 +4,7 @@ using DesignPatterns2.Cap3;
 using DesignPatterns2.Cap4;
 using DesignPatterns2.Cap5;
 using DesignPatterns2.Cap6;
+using DesignPatterns2.Cap7;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,10 +31,22 @@ namespace DesignPatterns2
             //PreFixaVisitor prefixa = new PreFixaVisitor();
             //soma.Aceita(prefixa);
 
-            IEnviador enviador = new EnviaPorEmail();
-            IMensagem mensagem = new MensagemAdministrativa("Alex");
-            mensagem.Enviador = enviador;
-            mensagem.Envia();
+            //IEnviador enviador = new EnviaPorEmail();
+            //IMensagem mensagem = new MensagemAdministrativa("Alex");
+            //mensagem.Enviador = enviador;
+            //mensagem.Envia();
+
+            //FilaDeTrabalho fila = new FilaDeTrabalho();
+            //Pedido pedido1 = new Pedido("Alex", 150.0);
+            //Pedido pedido2 = new Pedido("Lucas", 650.0);
+
+            //fila.Adiciona(new PagaPedido(pedido1));
+            //fila.Adiciona(new PagaPedido(pedido2));
+
+            //fila.Adiciona(new FinalizaPedido(pedido1));
+
+            //fila.Processa();
+
 
         }
     }

@@ -73,6 +73,12 @@
     <Compile Include="Cap6\IMensagem.cs" />
     <Compile Include="Cap6\MensagemCliente.cs" />
     <Compile Include="Cap6\MensagemAdministrativa.cs" />
+    <Compile Include="Cap7\FilaDeTrabalho.cs" />
+    <Compile Include="Cap7\FinalizaPedido.cs" />
+    <Compile Include="Cap7\IComando.cs" />
+    <Compile Include="Cap7\PagaPedido.cs" />
+    <Compile Include="Cap7\Pedido.cs" />
+    <Compile Include="Cap7\Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

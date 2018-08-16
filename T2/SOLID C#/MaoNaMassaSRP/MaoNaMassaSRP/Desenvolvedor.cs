@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace MaoNaMassaSRP
 {
-    public abstract class Cargo
+    class Desenvolvedor : Cargo
     {
-        public IRegraDeCalculo Regra { get; private set; }
-        
-        public Cargo(IRegraDeCalculo regra)
+        public Desenvolvedor(IRegraDeCalculo regra) : base(regra)
         {
-            this.Regra = regra;
+            
         }
     }
 }

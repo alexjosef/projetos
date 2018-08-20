@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Caelum.Leilao
 {
-    class Avaliador
+    public class Avaliador
     {
         private double maiorValor = double.MinValue;
         private double menorValor = double.MaxValue;
+        private double media = 0;
 
         public void Avalia(Leilao leilao)
         {
+            double total = 0;
             foreach(var lance in leilao.Lances)
             {
                 if (lance.Valor > maiorValor)
@@ -24,7 +26,9 @@ namespace Caelum.Leilao
                 {
                     menorValor = lance.Valor;
                 }
+                total += lance.Valor;         
             }
+            media = total / leilao.Lances.Count;
         }
 
         public double maiorLance
@@ -35,6 +39,11 @@ namespace Caelum.Leilao
         public double menorLance
         {
             get { return menorValor; }
+        }
+
+        public double Media
+        {
+            get { return media; }
         }
     }
 }

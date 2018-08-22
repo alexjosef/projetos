@@ -15,6 +15,10 @@ namespace Caelum.Leilao
 
         public void Avalia(Leilao leilao)
         {
+            if(leilao.Lances.Count == 0)
+            {
+                throw new Exception("Não é possivel avaliar leilões sem lances.");
+            }
             double total = 0;
             foreach(var lance in leilao.Lances)
             {

@@ -11,22 +11,34 @@ namespace Caelum.Leilao
     [TestFixture]
     class AvaliadorTest
     {
+        private Avaliador leiloeiro;
+        private Usuario alex;
+        private Usuario lucas;
+        private Usuario maria;
+        private Usuario joao;
+
+        [SetUp]
+        public void CriaAvaliador()
+        {
+            this.leiloeiro = new Avaliador();
+
+            this.alex = new Usuario("Alex");
+            this.lucas = new Usuario("Lucas");
+            this.maria = new Usuario("Maria");
+            this.joao = new Usuario("João");
+        }
+
         [Test]
         public void TestandoOAvaliador()
         {
-            //1a parte: cenario
-            Usuario alex = new Usuario("Alex");
-            Usuario lucas = new Usuario("Lucas");
-            Usuario maria = new Usuario("Maria");
-
-            Leilao leilao = new Leilao("GeForce GTX 1080Ti");
-
-            leilao.Propoe(new Lance(alex, 3000.0));
-            leilao.Propoe(new Lance(maria, 1500.0));
-            leilao.Propoe(new Lance(lucas, 1500.0));
+            //1a parte: cenario   
+            Leilao leilao = new CriadorDeLeilao().Para("GeForce GTX 1080Ti")
+                .Lance(alex, 3000.0)
+                .Lance(maria, 1500.0)
+                .Lance(lucas, 1500.0)
+                .Constroi();
 
             //2a parte: ação
-            Avaliador leiloeiro = new Avaliador();
             leiloeiro.Avalia(leilao);
 
             //3a parte: validação
@@ -39,13 +51,9 @@ namespace Caelum.Leilao
         [Test]
         public void TesteComApenasUmLance()
         {
-            Usuario joao = new Usuario("João");
-
-            Leilao leilao = new Leilao("PS4");
-
-            leilao.Propoe(new Lance(joao, 1500.0));
-
-            Avaliador leiloeiro = new Avaliador();
+            Leilao leilao = new CriadorDeLeilao().Para("PS4")
+                .Lance(joao, 1500.0)
+                .Constroi();
 
             leiloeiro.Avalia(leilao);
 
@@ -56,17 +64,13 @@ namespace Caelum.Leilao
         [Test]
         public void TestePegaTresMaiores()
         {
-            Usuario alex = new Usuario("Alex");
-            Usuario maria = new Usuario("Maria");
+            Leilao leilao = new CriadorDeLeilao().Para("Monitor 24p")
+                .Lance(alex, 450.0)
+                .Lance(maria, 480.0)
+                .Lance(alex, 500.0)
+                .Lance(maria, 600.0)
+                .Constroi();
 
-            Leilao leilao = new Leilao("Monitor 24p");
-
-            leilao.Propoe(new Lance(alex, 450.0));
-            leilao.Propoe(new Lance(maria, 480.0));
-            leilao.Propoe(new Lance(alex, 500.0));
-            leilao.Propoe(new Lance(maria, 600.0));
-
-            Avaliador leiloeiro = new Avaliador();
             leiloeiro.Avalia(leilao);
 
             var maiores = leiloeiro.TresMaiores;
@@ -80,18 +84,15 @@ namespace Caelum.Leilao
         [Test]
         public void TesteNumerosRandomicos()
         {
-            Usuario alex = new Usuario("Alex");
-            Usuario maria = new Usuario("Maria");
-
-            Leilao leilao = new Leilao("Jogo PS4");
-            leilao.Propoe(new Lance(alex, 200));  
-            leilao.Propoe(new Lance(maria, 450));
-            leilao.Propoe(new Lance(alex, 120));
-            leilao.Propoe(new Lance(maria, 700));
-            leilao.Propoe(new Lance(alex, 630));
-            leilao.Propoe(new Lance(maria, 230));
-
-            Avaliador leiloeiro = new Avaliador();
+            Leilao leilao = new CriadorDeLeilao().Para("Jogo PS4")
+                .Lance(alex, 200.0)
+                .Lance(maria, 450.0)
+                .Lance(alex, 120.0)
+                .Lance(maria, 700.0)
+                .Lance(alex, 630.0)
+                .Lance(maria, 230.0)
+                .Constroi();
+            
             leiloeiro.Avalia(leilao);
 
             Assert.AreEqual(700, leiloeiro.maiorLance, 0.00001);
@@ -101,16 +102,13 @@ namespace Caelum.Leilao
         [Test]
         public void TesteOrdemDecrescente()
         {
-            Usuario alex = new Usuario("Alex");
-            Usuario maria = new Usuario("Maria");
-
-            Leilao leilao = new Leilao("Espelho");
-            leilao.Propoe(new Lance(alex, 400));
-            leilao.Propoe(new Lance(maria, 300));
-            leilao.Propoe(new Lance(alex, 200));
-            leilao.Propoe(new Lance(maria, 100));
-
-            Avaliador leiloeiro = new Avaliador();
+            Leilao leilao = new CriadorDeLeilao().Para("Espelho")
+                .Lance(alex, 400.0)
+                .Lance(maria, 300.0)
+                .Lance(alex, 200.0)
+                .Lance(maria, 100.0)
+                .Constroi();
+            
             leiloeiro.Avalia(leilao);
 
             Assert.AreEqual(400, leiloeiro.maiorLance, 0.00001);
@@ -120,15 +118,11 @@ namespace Caelum.Leilao
         [Test]
         public void TestePegaDoisUnicosLances()
         {
-            Usuario alex = new Usuario("Alex");
-            Usuario maria = new Usuario("Maria");
-
-            Leilao leilao = new Leilao("Monitor 24p");
-
-            leilao.Propoe(new Lance(alex, 450.0));
-            leilao.Propoe(new Lance(maria, 480.0));
-
-            Avaliador leiloeiro = new Avaliador();
+            Leilao leilao = new CriadorDeLeilao().Para("Monitor 24p")
+                .Lance(alex, 450.0)
+                .Lance(maria, 480.0)
+                .Constroi();
+            
             leiloeiro.Avalia(leilao);
 
             var maiores = leiloeiro.TresMaiores;
@@ -139,19 +133,34 @@ namespace Caelum.Leilao
         }
 
         [Test]
+        [ExpectedException(typeof(Exception))]
         public void TesteListaDeLancesVazia()
         {
-            Usuario alex = new Usuario("Alex");
-            Usuario maria = new Usuario("Maria");
-
-            Leilao leilao = new Leilao("Monitor 24p");
-
-            Avaliador leiloeiro = new Avaliador();
+            Leilao leilao = new CriadorDeLeilao().Para("Monitor 24p")
+                .Constroi();
+            
             leiloeiro.Avalia(leilao);
 
             var maiores = leiloeiro.TresMaiores;
 
             Assert.AreEqual(0, maiores.Count);
+        }
+
+        [TearDown]
+        public void Finaliza()
+        {
+            Console.WriteLine("fim");
+        }
+
+        [Test]
+        [ExpectedException(typeof(Exception))]
+        public void TesteNãoDeveAvaliarSemLance()
+        {
+            Leilao leilao = new CriadorDeLeilao().Para("Playstation 2").Constroi();
+
+            leiloeiro.Avalia(leilao);
+
+            //Assert.???
         }
     }
 }

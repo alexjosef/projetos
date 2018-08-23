@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,6 +21,12 @@ namespace ByteBank.Portal.Infraestrutura
 
         public void Iniciar()
         {
+            while (true)
+                ManipularRequisicao();
+        }
+
+        private void ManipularRequisicao()
+        {
             var httpListener = new HttpListener();
 
             foreach (var prefixo in _prefixos)
@@ -31,17 +38,32 @@ namespace ByteBank.Portal.Infraestrutura
             var requisicao = contexto.Request;
             var resposta = contexto.Response;
 
-            var respostaConteudo = "Hello World";
-            var respostaConteudoBytes = Encoding.UTF8.GetBytes(respostaConteudo);
+            var path = requisicao.Url.AbsolutePath;
+            
+            var assembly = Assembly.GetExecutingAssembly();
 
-            resposta.ContentType = "text/html; charset=utf-8";
-            resposta.StatusCode = 200;
-            resposta.ContentLength64 = respostaConteudoBytes.Length;
+            var nomeResource = Utilidades.ConverterPathParaNomeAssembly(path);
+            var resourceStream = assembly.GetManifestResourceStream(nomeResource);
+            if(resourceStream == null)
+            {
+                resposta.StatusCode = 404;
+                resposta.OutputStream.Close();
+            }
+            else
+            {
+                var bytesResource = new byte[resourceStream.Length];
 
-            resposta.OutputStream.Write(respostaConteudoBytes, 0, respostaConteudoBytes.Length);
+                resourceStream.Read(bytesResource, 0, (int)resourceStream.Length);
 
-            resposta.OutputStream.Close();
+                resposta.ContentType = Utilidades.ObterTipoDeConteudo(path);
+                resposta.StatusCode = 200;
+                resposta.ContentLength64 = resourceStream.Length;
 
+                resposta.OutputStream.Write(bytesResource, 0, bytesResource.Length);
+
+                resposta.OutputStream.Close();
+                
+            }
             httpListener.Stop();
         }
     }

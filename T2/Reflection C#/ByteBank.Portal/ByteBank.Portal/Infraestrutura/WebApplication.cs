@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ByteBank.Portal.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -39,30 +40,40 @@ namespace ByteBank.Portal.Infraestrutura
             var resposta = contexto.Response;
 
             var path = requisicao.Url.AbsolutePath;
-            
-            var assembly = Assembly.GetExecutingAssembly();
 
-            var nomeResource = Utilidades.ConverterPathParaNomeAssembly(path);
-            var resourceStream = assembly.GetManifestResourceStream(nomeResource);
-            if(resourceStream == null)
+
+            if (Utilidades.EhArquivo(path))
             {
-                resposta.StatusCode = 404;
+                var manipulador = new ManipuladorRequisicaoArquivo();
+                manipulador.Manipular(resposta, path);
+            }
+            else if (path == "/Cambio/MXN")
+            {
+                var controller = new CambioController();
+                var paginaConteudo = controller.MXN();
+
+                var bufferArquivo = Encoding.UTF8.GetBytes(paginaConteudo);
+
+                resposta.StatusCode = 200;
+                resposta.ContentType = "text/html; charset=utf-8";
+                resposta.ContentLength64 = bufferArquivo.Length;
+
+                resposta.OutputStream.Write(bufferArquivo, 0, bufferArquivo.Length);
                 resposta.OutputStream.Close();
             }
-            else
+            else if (path == "/Cambio/USD")
             {
-                var bytesResource = new byte[resourceStream.Length];
+                var controller = new CambioController();
+                var paginaConteudo = controller.USD();
 
-                resourceStream.Read(bytesResource, 0, (int)resourceStream.Length);
+                var bufferArquivo = Encoding.UTF8.GetBytes(paginaConteudo);
 
-                resposta.ContentType = Utilidades.ObterTipoDeConteudo(path);
                 resposta.StatusCode = 200;
-                resposta.ContentLength64 = resourceStream.Length;
+                resposta.ContentType = "text/html; charset=utf-8";
+                resposta.ContentLength64 = bufferArquivo.Length;
 
-                resposta.OutputStream.Write(bytesResource, 0, bytesResource.Length);
-
+                resposta.OutputStream.Write(bufferArquivo, 0, bufferArquivo.Length);
                 resposta.OutputStream.Close();
-                
             }
             httpListener.Stop();
         }

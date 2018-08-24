@@ -8,6 +8,17 @@ namespace ByteBank.Portal.Infraestrutura
 {
     public static class Utilidades
     {
+
+        public static bool EhArquivo( string path )
+        {
+            // /Assets/css/styles.css
+            // /Assets/js/main.js
+
+            var partesPath = path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+            var ultimaParte = partesPath.Last();
+
+            return ultimaParte.Contains('.');
+        }
         public static string ConverterPathParaNomeAssembly(string path)
         {
             // /Assets/css/styles.css

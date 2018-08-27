@@ -63,7 +63,9 @@
     <EmbeddedResource Include="View\Cartoes\Debito.html" />
     <EmbeddedResource Include="View\Home\Index.html" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="View\Cambio\Calculo.html" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ByteBank.Service\ByteBank.Service.csproj">
       <Project>{34e1a873-2a89-4b19-85a8-a685077922ae}</Project>

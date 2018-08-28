@@ -71,7 +71,7 @@ namespace ByteBank.Portal.Infraestrutura.Binding
             {
                 var parametros = sobrecarga.GetParameters();
 
-                if (argumentosCount != parametros.Lenght)
+                if (argumentosCount != parametros.Length)
                     continue;
 
                 var match =

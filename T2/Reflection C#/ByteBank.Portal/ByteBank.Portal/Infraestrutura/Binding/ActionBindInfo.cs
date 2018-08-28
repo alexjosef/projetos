@@ -32,12 +32,19 @@ namespace ByteBank.Portal.Infraestrutura.Binding
             if(!possuiArgumentos)
             return MethodInfo.Invoke(controller, new object[0]);
 
+            var parametrosMethodInfo = MethodInfo.GetParameters();
             var parametrosInvoke = new object[countParametros];
 
             for (int i = 0; i < countParametros; i++)
             {
                 var parametro = MethodInfo.GetParameters()[i];
+                var parametroNome = parametro.Name;
+
+                var argumento = TuplasArgumentoNomeValor.Single(tupla => tupla.Nome == parametroNome);
+
+                parametrosInvoke[i] = Convert.ChangeType(argumento.Valor, parametro.ParameterType);
             }
+            return MethodInfo.Invoke(controller, parametrosInvoke);
         }
         
     }

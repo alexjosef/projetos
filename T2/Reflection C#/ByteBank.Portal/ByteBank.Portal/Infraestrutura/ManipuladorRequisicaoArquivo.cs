@@ -15,14 +15,15 @@ namespace ByteBank.Portal.Infraestrutura
             var assembly = Assembly.GetExecutingAssembly();
 
             var nomeResource = Utilidades.ConverterPathParaNomeAssembly(path);
+
             var resourceStream = assembly.GetManifestResourceStream(nomeResource);
+
             if (resourceStream == null)
             {
                 resposta.StatusCode = 404;
                 resposta.OutputStream.Close();
             }
             else
-            {
                 using (resourceStream)
                 {
                     var bytesResource = new byte[resourceStream.Length];
@@ -36,9 +37,7 @@ namespace ByteBank.Portal.Infraestrutura
                     resposta.OutputStream.Write(bytesResource, 0, bytesResource.Length);
 
                     resposta.OutputStream.Close();
-                } 
-            }
+                }
         }
-
     }
 }

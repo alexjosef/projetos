@@ -10,7 +10,7 @@ namespace ByteBank.Service.Cambio
     {
         private readonly Random _rdm = new Random();
 
-        public decimal Calcular(string mordeOrigin, string moedaDestino, decimal valor) =>
+        public decimal Calcular(string moedaOrigem, string moedaDestino, decimal valor) =>
             valor * (decimal)_rdm.NextDouble();
     }
 }

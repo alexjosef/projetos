@@ -8,6 +8,6 @@ namespace ByteBank.Service
 {
     public interface ICambioService
     {
-        decimal Calcular(string mordeOrigin, string moedaDestino, decimal valor);
+        decimal Calcular(string moedaOrigem, string moedaDestino, decimal valor);
     }
 }

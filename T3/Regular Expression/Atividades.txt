@@ -49,3 +49,8 @@ Regex: ^Caused\s+by:.*
 Alvo: Z171PZ7AZ23PZ7819AZ78GZ1AZ99IZ34O
 
 Regex: [A-Z]\d+(\w)
+
+
+Alvo: super.mario@caelum.com.br extrai super.mario
+
+Regex: ([a-z.]{4,14}[a-z\d])@(?:caelum.com.br|alura.com.br)

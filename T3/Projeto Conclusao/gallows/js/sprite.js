@@ -1,20 +1,5 @@
 var createSprite = function(selector) {
 
-    var $el = $(selector);
-
-    var frames = [
-        'frame1', 'frame2', 'frame3', 'frame4', 'frame5',
-        'frame6', 'frame7', 'frame8', 'frame9'
-    ];
-
-    var current = 0;
-
-    var last = sprites.length - 1;
-
-    $el.addClass(frames[current]);
-
-    //
-
     var hasNext = function() {
 
         return current + 1 <= last;
@@ -22,7 +7,8 @@ var createSprite = function(selector) {
 
     var moveFrame = function(from, to) {
 
-        $el.removeClass(from).addClass(to);
+        $el.removeClass(from)
+            .addClass(to);
     };
 
     var nextFrame = function() {
@@ -40,6 +26,19 @@ var createSprite = function(selector) {
 
         return !hasNext();
     };
+
+    var $el = $(selector);
+
+    var frames = [
+        'frame1', 'frame2', 'frame3', 'frame4', 'frame5',
+        'frame6', 'frame7', 'frame8', 'frame9'
+    ];
+
+    var current = 0;
+
+    var last = frames.length - 1;
+
+    $el.addClass(frames[current]);
 
     return { nextFrame: nextFrame, reset: reset, isFinished: isFinished };
 }
